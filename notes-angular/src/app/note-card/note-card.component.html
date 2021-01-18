@@ -1,11 +1,10 @@
 <div #container class="note-card-container">
 
   <div class="note-card-content">
-    <h4 class="note-card-title">Title</h4>
+    <h4 class="note-card-title">{{ title }}</h4>
 
     <div #bodyText id="bodyText" class="note-card-body">
-      <p>Main text. Text that contain no info and is fucking shit, at all. But, you know, shit is sometimes a very shit.
-        Main text. Text that contain no info and is fucking shit, at all. But, you know, shit is sometimes a very shit.</p>
+      <p>{{ body }}</p>
       <div #truncator id="truncator" class="fade-out-truncation"></div>
     </div>
   </div>
