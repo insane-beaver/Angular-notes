@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, Renderer2} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, Renderer2} from '@angular/core';
 
 @Component({
   selector: 'app-note-card',
@@ -9,6 +9,9 @@ export class NoteCardComponent implements OnInit {
 
   @Input() title?: string;
   @Input() body?: string;
+  @Input() link?: string;
+
+  @Output('delete') deleteEvent: EventEmitter<void> = new EventEmitter<void>();
 
   constructor(private renderer: Renderer2) { }
 
@@ -25,6 +28,10 @@ export class NoteCardComponent implements OnInit {
       this.renderer.setStyle(truncator, 'display', 'none'); //overflow
     }
 
+  }
+
+  OnXClick() {
+    this.deleteEvent.emit();
   }
 
 }

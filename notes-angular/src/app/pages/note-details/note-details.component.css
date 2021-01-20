@@ -1,0 +1,54 @@
+.note-card-container {
+  background-color: #f8ac59;
+
+  margin-bottom: 20px;
+
+  -moz-box-shadow: 5px 5px 7px #212121;
+  -webkit-box-shadow: 5px 5px 7px rgba(33, 33, 33, 0.7);
+  box-shadow: 5px 5px 7px rgba(33, 33, 33, 0.7);
+  -moz-transition: -moz-transform 0.15s linear;
+  -o-transition: -o-transform 0.15s linear;
+  -webkit-transition: -webkit-transform 0.15s linear;
+}
+
+.note-card-content {
+  color: #000;
+  padding: 1em;
+}
+
+
+.form-container {
+  max-width: 600px;
+  margin: 50px auto auto;
+}
+
+.input {
+  width: 100%;
+  border: 0;
+  background-color: #f8ac59;
+  filter: brightness(102%);
+}
+
+.textarea {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 100%;
+  min-height: 200px;
+  line-height: 20px;
+  border: 0;
+
+  background-color: #f8ac59;
+  filter: brightness(102%);
+}
+
+
+/*VALIDATION INFO*/
+.invalid {
+  color: red;
+  font-size: small;
+  visibility: hidden;
+}
+.ng-invalid.ng-touched .invalid {
+  visibility: visible;
+}
