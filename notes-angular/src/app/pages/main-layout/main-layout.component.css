@@ -1,0 +1,7 @@
+.OptionsIcon {
+  transform: scale(1);
+  transition: 0.3s ease-out;
+}
+.OptionsIcon:hover {
+  transform: scale(1.1);
+}

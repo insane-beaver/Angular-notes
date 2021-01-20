@@ -1,0 +1,36 @@
+<div class="form-container">
+
+  <form #noteForm="ngForm" (ngSubmit)="onSubmit(noteForm)">
+
+    <div class="note-card-container">
+
+      <div class="note-card-content">
+
+        <div class="field">
+          <label class="h5 mb-2 fw-normal">Title</label>
+          <div class="control">
+            <input type="text" class="input" name="title" [ngModel]="note.title" required placeholder="Enter title">
+            <p class="invalid">*Must be filled</p>
+          </div>
+        </div>
+
+
+        <div class="field">
+          <label class="h5 mb-2 fw-normal">Body</label>
+          <div class="control">
+            <textarea class="textarea" name="body" [ngModel]="note.body" required placeholder="Enter body"> </textarea>
+            <p class="invalid">*Must be filled</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="float-right">
+      <button type="button" style="margin-right: 20px" class="btn btn-danger" (click)="cancel()" >Cancel</button>
+      <button type="submit" class="btn btn-success save-btn" [disabled]="!noteForm.valid">Save</button>
+    </div>
+
+  </form>
+
+</div>

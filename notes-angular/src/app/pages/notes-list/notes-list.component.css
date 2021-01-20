@@ -1,0 +1,9 @@
+.SearchBox {
+  transform: scale(1);
+  transition: 0.3s ease-out;
+}
+
+.SearchBox:hover {
+  cursor: pointer;
+  transform: scale(1.3);
+}
