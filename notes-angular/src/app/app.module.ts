@@ -10,6 +10,11 @@ import { MainLayoutComponent } from './pages/main-layout/main-layout.component';
 import { OptionsComponent } from './pages/options/options.component';
 import { NoteCardComponent } from './note-card/note-card.component';
 import { NoteDetailsComponent } from './pages/note-details/note-details.component';
+import {StorageServiceModule} from "ngx-webstorage-service";
+import {LocalStorageService} from "./shared/local-storage-service.service";
+import { AngularFirestoreModule } from "@angular/fire/firestore";
+import { AngularFireModule } from "@angular/fire";
+import {environment} from "../environments/environment";
 
 @NgModule({
   declarations: [
@@ -23,9 +28,13 @@ import { NoteDetailsComponent } from './pages/note-details/note-details.componen
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    StorageServiceModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
+
   ],
-  providers: [],
+  providers: [LocalStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

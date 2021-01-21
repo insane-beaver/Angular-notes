@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output, Renderer2} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, Input, OnInit, Output, Renderer2} from '@angular/core';
 
 @Component({
   selector: 'app-note-card',
