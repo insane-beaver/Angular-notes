@@ -15,13 +15,12 @@
   <div class="row py-lg-5">
     <div class="col-lg-6 col-md-8 mx-auto">
 
-      <div>
+      <div [@itemAnim] *ngFor="let note of notes">
         <app-note-card
-          *ngFor="let note of notes"
           [link]="''+note.id"
           (delete)="deleteNote(note.id)"
           [title]="note.title"
-          [body]="note.body">
+          [body]="note.body">>
         </app-note-card>
       </div>
 
