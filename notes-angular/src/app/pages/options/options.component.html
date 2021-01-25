@@ -3,9 +3,13 @@
     <div class="col-lg-6 col-md-8 mx-auto">
       <p>{{switchText}}</p>
       <label class="switch">
-        <input type="checkbox" (click)="clickSwitch()">
+        <input type="checkbox" [checked]="option" (change)="clickSwitch()">
         <span class="slider round"></span>
       </label>
+
+      <br>
+
+      <button type="button" style="width: 150px" class="btn btn-primary" (click)="apply()">Apply</button>
     </div>
   </div>
 </section>

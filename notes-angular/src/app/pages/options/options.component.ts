@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Inf} from "../../shared/note.model";
+import {Router} from "@angular/router";
+import { LocalStorageService } from "../../shared/local-storage-service.service";
 
 @Component({
   selector: 'app-options',
@@ -7,24 +10,41 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OptionsComponent implements OnInit {
 
-  switchData = false;
   switchText = "Save in localStorage ";
+  option = false;
 
-  constructor() { }
+  saveState: number = 0;
+
+
+  constructor(private router: Router, private store: LocalStorageService) { }
 
   ngOnInit(): void {
+    if(Inf.saveType==0) {
+      this.option = false;
+      this.switchText = "Save in localStorage";
+    } else {
+      this.option = true;
+      this.switchText = "Save in Firebase";
+    }
   }
 
   clickSwitch() {
-    if(!this.switchData) {
-      this.switchData = true;
+    if(!this.option) {
+      this.saveState = 1;
+      this.option = true;
       this.switchText = "Save in Firebase";
     } else {
-      this.switchData = false;
+      this.saveState = 0;
+      this.option = false;
       this.switchText = "Save in localStorage";
     }
+  }
 
-    console.log(this.switchData);
+  apply() {
+    this.store.saveOptions(this.saveState);
+    Inf.saveType = this.store.getOptions();
+
+    this.router.navigateByUrl('/');
   }
 
 }

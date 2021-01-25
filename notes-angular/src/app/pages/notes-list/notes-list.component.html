@@ -1,7 +1,7 @@
 <section class="py-5 text-center container">
 
-  <div class="input-group">
-    <input type="text" class="form-control rounded" placeholder="Search" aria-label="Search"
+  <div class="input-group mb-3">
+    <input type="text" class="form-control rounded" placeholder="Enter Title to search" aria-label="Search"
            aria-describedby="search-addon" />
     <span class="input-group-text border-0" id="search-addon">
           <div class="SearchBox">
@@ -15,21 +15,20 @@
   <div class="row py-lg-5">
     <div class="col-lg-6 col-md-8 mx-auto">
 
-      <div>
+      <div [@itemAnim] *ngFor="let note of notes">
         <app-note-card
-          *ngFor="let note of notes; index as i"
-          [link]="''+i"
-          (delete)="deleteNote(i)"
+          [link]="''+note.id"
+          (delete)="deleteNote(note.id)"
           [title]="note.title"
-          [body]="note.body">
+          [body]="note.body">>
         </app-note-card>
       </div>
 
     </div>
   </div>
 
-  <div class="fixed-bottom" style="margin-bottom: 50px">
-    <button type="button" style="width: 500px" class="btn btn-primary" routerLink="new">Add</button>
+  <div class="fixed-bottom" style="margin-bottom: 3vmin">
+    <button type="button" style="width: 60vmin" class="btn btn-primary" routerLink="new">Add</button>
   </div>
 
 </section>
