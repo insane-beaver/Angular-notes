@@ -66,7 +66,7 @@ export class NotesService {
   }
 
   update(id: number, title: string, body: string) {
-    let note = this.notes[id];
+    let note = this.notes[this.getPosition(id)];
     note.title = title;
     note.body = body;
 

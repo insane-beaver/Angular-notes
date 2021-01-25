@@ -1,11 +1,5 @@
 {
-  "targets": {
-    "notes-angular-3e6ea": {
-      "hosting": {
-        "notes-angular": [
-          "notes-angular-3e6ea"
-        ]
-      }
-    }
+  "projects": {
+    "default": "notes-angular-3e6ea"
   }
 }

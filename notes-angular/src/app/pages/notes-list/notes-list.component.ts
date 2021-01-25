@@ -1,6 +1,7 @@
-import {Component, ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core';
-import {Note} from "../../shared/note.model";
+import {Component, ElementRef, Input, OnInit, Renderer2, ViewChild} from '@angular/core';
+import {Note, Inf} from "../../shared/note.model";
 import {NotesService} from "../../shared/notes.service";
+import { LocalStorageService } from "../../shared/local-storage-service.service";
 import {animate, style, transition, trigger} from "@angular/animations";
 
 @Component({
@@ -69,9 +70,10 @@ export class NotesListComponent implements OnInit {
 
   notes: Note[] = new Array<Note>();
 
-  constructor(private notesService: NotesService) { }
+  constructor(private notesService: NotesService, private store: LocalStorageService) { }
 
   ngOnInit(): void {
+    Inf.saveType = this.store.getOptions();
     this.notes = this.notesService.getAll();
   }
 

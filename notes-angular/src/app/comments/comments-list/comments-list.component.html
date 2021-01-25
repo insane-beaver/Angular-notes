@@ -1,0 +1,41 @@
+<div *ngIf="opened==1">
+
+  <div *ngIf="saveType==1; else elseBlock">
+    <div class="coment-bottom bg-white p-2 px-4">
+
+      <form #commentForm="ngForm" (ngSubmit)="onSubmit(commentForm)">
+        <div class="d-flex flex-row add-comment-section mt-4">
+          <img class="img-fluid img-responsive rounded-circle mr-2" src="https://img.icons8.com/pastel-glyph/64/000000/person-male--v3.png" width="38">
+          <input type="text" class="form-control mr-3" name="author" [ngModel]="comment.author" required placeholder="Your name">
+        </div>
+        <div class="d-flex flex-row add-comment-section mt-1">
+          <textarea type="text" class="form-control mr-3" name="content" [ngModel]="comment.content" required placeholder="Add comment"></textarea>
+        </div>
+        <div class="float-right mt-1">
+          <button class="btn btn-primary" type="submit">Comment</button>
+        </div>
+      </form>
+
+      <br><br>
+
+      <div *ngFor="let comment of comments">
+        <div *ngIf="noteId==comment.noteId">
+          <app-single-comment
+            [author]="comment.author"
+            [content]="comment.content"
+            [date]="comment.created_at">
+          </app-single-comment>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <ng-template #elseBlock>
+    <br>
+    <div class="d-flex flex-row post-title">
+      <h5>Comment available only in Firebase mode</h5>
+      <a routerLink="/options" class="ml-2">(go to options and change it)</a>
+    </div>
+  </ng-template>
+
+</div>

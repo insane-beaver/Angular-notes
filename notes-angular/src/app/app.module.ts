@@ -16,6 +16,8 @@ import {LocalStorageService} from "./shared/local-storage-service.service";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AngularFireModule } from "@angular/fire";
 import {environment} from "../environments/environment";
+import { CommentsListComponent } from './comments/comments-list/comments-list.component';
+import { SingleCommentComponent } from './comments/single-comment/single-comment.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import {environment} from "../environments/environment";
     MainLayoutComponent,
     OptionsComponent,
     NoteCardComponent,
-    NoteDetailsComponent
+    NoteDetailsComponent,
+    CommentsListComponent,
+    SingleCommentComponent
   ],
   imports: [
     BrowserModule,

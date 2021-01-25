@@ -1,4 +1,5 @@
 import {AfterViewInit, Component, EventEmitter, Input, OnInit, Output, Renderer2} from '@angular/core';
+import {Inf} from "../shared/note.model";
 
 @Component({
   selector: 'app-note-card',
@@ -10,6 +11,7 @@ export class NoteCardComponent implements OnInit {
   @Input() title?: string;
   @Input() body?: string;
   @Input() link?: string;
+  @Input() opacity: number = Inf.touchScreen;
 
   @Output('delete') deleteEvent: EventEmitter<void> = new EventEmitter<void>();
 

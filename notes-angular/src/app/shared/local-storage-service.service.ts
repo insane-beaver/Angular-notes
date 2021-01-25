@@ -25,8 +25,16 @@ export class LocalStorageService {
   }
 
   public getAll() {
-    console.log(this.storage);
     this.notesList = this.storage.get(STORAGE_KEY);
     return this.notesList;
+  }
+
+  public saveOptions(options: number) {
+    this.storage.set('localOptions', options);
+  }
+  public getOptions() {
+    console.log(this.storage);
+    let options: number = this.storage.get('localOptions');
+    return options;
   }
 }
