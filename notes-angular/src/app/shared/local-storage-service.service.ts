@@ -33,8 +33,15 @@ export class LocalStorageService {
     this.storage.set('localOptions', options);
   }
   public getOptions() {
-    console.log(this.storage);
     let options: number = this.storage.get('localOptions');
     return options;
+  }
+
+  public saveUser(name: string) {
+    this.storage.set('localUser', name);
+  }
+  public getUser() {
+    let name: string = this.storage.get('localUser');
+    return name;
   }
 }

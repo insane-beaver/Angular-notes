@@ -15,4 +15,5 @@ export class Comment {
 export class Inf {
   public static saveType = 0; //0-LocalSt   1-Firebase
   public static touchScreen = 0; //0-without 1 - with
+  public static userName: string;
 }

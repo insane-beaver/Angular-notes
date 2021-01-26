@@ -9,8 +9,8 @@
         <div class="field">
           <label class="h5 mb-2 fw-normal">Title</label>
           <div class="control">
-            <input type="text" class="input" name="title" [ngModel]="note.title" required placeholder="Enter title">
-            <p class="invalid">*Must be filled</p>
+            <input #title="ngModel" type="text" class="input" name="title" [ngModel]="note.title" required placeholder="Enter title">
+            <p [hidden]="!(title.touched && title.invalid)" class="invalid">*Must be filled</p>
           </div>
         </div>
 
@@ -18,15 +18,15 @@
         <div class="field">
           <label class="h5 mb-2 fw-normal">Body</label>
           <div class="control">
-            <textarea class="textarea" name="body" [ngModel]="note.body" required placeholder="Enter body"> </textarea>
-            <p class="invalid">*Must be filled</p>
+            <textarea #body="ngModel" class="textarea" name="body" [ngModel]="note.body" required placeholder="Enter body"> </textarea>
+            <p [hidden]="!(body.touched && body.invalid)" class="invalid">*Must be filled</p>
           </div>
         </div>
       </div>
 
     </div>
 
-    <div class="float-right">
+    <div class="float-right mr-2">
       <button type="button" style="margin-right: 20px" class="btn btn-danger" (click)="cancel()" >Cancel</button>
       <button type="submit" class="btn btn-success save-btn" [disabled]="!noteForm.valid">Save</button>
     </div>

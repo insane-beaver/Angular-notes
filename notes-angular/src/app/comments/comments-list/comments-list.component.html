@@ -4,15 +4,17 @@
     <div class="coment-bottom bg-white p-2 px-4">
 
       <form #commentForm="ngForm" (ngSubmit)="onSubmit(commentForm)">
-        <div class="d-flex flex-row add-comment-section mt-4">
-          <img class="img-fluid img-responsive rounded-circle mr-2" src="https://img.icons8.com/pastel-glyph/64/000000/person-male--v3.png" width="38">
-          <input type="text" class="form-control mr-3" name="author" [ngModel]="comment.author" required placeholder="Your name">
+        <div class="d-flex flex-row add-comment-section mt-4" style="height: auto">
+          <img class="img-fluid img-responsive rounded-circle mr-2" src="https://img.icons8.com/pastel-glyph/64/000000/person-male--v3.png" style="max-width: 38px; max-height: 38px">
+          <input #author="ngModel" type="text" class="form-control mr-3" name="author" [ngModel]="comment.author" required pattern="[A-Z].* [A-Z].*" placeholder="Your name">
+          <p [hidden]="!(author.touched && author.invalid)" class="invalid">*Must contain two words that begin with a capital letter</p>
         </div>
         <div class="d-flex flex-row add-comment-section mt-1">
-          <textarea type="text" class="form-control mr-3" name="content" [ngModel]="comment.content" required placeholder="Add comment"></textarea>
+          <textarea #content="ngModel" type="text" class="form-control mr-3" name="content" [ngModel]="comment.content" required placeholder="Add comment"></textarea>
+          <p [hidden]="!(content.touched && content.invalid)" class="invalid">*Must be filled</p>
         </div>
         <div class="float-right mt-1">
-          <button class="btn btn-primary" type="submit">Comment</button>
+          <button class="btn btn-primary" type="submit" [disabled]="!commentForm.valid">Comment</button>
         </div>
       </form>
 

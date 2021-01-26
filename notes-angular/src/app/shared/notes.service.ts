@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {Note} from "./note.model";
-import {Inf} from "./note.model";
+import {Note, Inf, Comment} from "./note.model";
 import {LocalStorageService} from "./local-storage-service.service";
 import {FireStoreService} from "./fire-store.service";
+import {CommentsService} from "./comments.service";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,7 @@ export class NotesService {
 
   notes: Note[] = new Array<Note>();
 
-  constructor(private localStorageService: LocalStorageService, private store: FireStoreService ) { }
+  constructor(private localStorageService: LocalStorageService, private store: FireStoreService, private commentsService: CommentsService ) { }
 
   private rewriteAll() {
     if(Inf.saveType==0) {
@@ -57,11 +57,9 @@ export class NotesService {
     note.id = this.getMaxId()+1;
     if(Inf.saveType==0) {
       this.localStorageService.saveOne(note);
-      console.log("Saved local");
     } else {
       this.notes.push(note);
       this.store.saveOne(note, note.id);
-      console.log("Saved in Firebase");
     }
   }
 
@@ -83,6 +81,7 @@ export class NotesService {
       this.localStorageService.rewriteAllInStorage(this.notes);
     } else {
       this.store.deleteOne(id);
+      this.commentsService.deleteByNoteId(id);
     }
   }
 }
