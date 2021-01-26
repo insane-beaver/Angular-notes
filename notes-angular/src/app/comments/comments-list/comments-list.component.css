@@ -34,3 +34,9 @@ body {
 .hit-voting {
   cursor: pointer
 }
+
+/*VALIDATION INFO*/
+.invalid {
+  color: red;
+  font-size: small;
+}

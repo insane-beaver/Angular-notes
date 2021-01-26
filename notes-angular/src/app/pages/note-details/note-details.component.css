@@ -47,8 +47,4 @@
 .invalid {
   color: red;
   font-size: small;
-  visibility: hidden;
-}
-.ng-invalid.ng-touched .invalid {
-  visibility: visible;
 }

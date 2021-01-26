@@ -52,24 +52,15 @@ export class CommentsService {
     this.store.saveOne(comment, comment.id);
   }
 
-  /*update(id: number, title: string, body: string) {
-    let note = this.notes[this.getPosition(id)];
-    note.title = title;
-    note.body = body;
-
-    if(Inf.saveType==0) {
-      this.localStorageService.rewriteAllInStorage(this.notes);
-    } else {
-      this.store.changeOne(note,id);
+  deleteByNoteId(noteId: number) {
+    for (var i = 0, len = this.comments.length; i < len; i++) {
+      if(this.comments[i].noteId==noteId) {
+        this.delete(this.comments[i].id);
+      }
     }
   }
 
   delete(id: number) {
-    this.notes.splice(this.getPosition(id), 1);
-    if(Inf.saveType==0) {
-      this.localStorageService.rewriteAllInStorage(this.notes);
-    } else {
-      this.store.deleteOne(id);
-    }
-  }*/
+    this.store.deleteOne(id);
+  }
 }

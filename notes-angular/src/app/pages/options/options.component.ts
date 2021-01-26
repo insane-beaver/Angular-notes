@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Inf} from "../../shared/note.model";
 import {Router} from "@angular/router";
 import { LocalStorageService } from "../../shared/local-storage-service.service";
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-options',
@@ -15,10 +16,17 @@ export class OptionsComponent implements OnInit {
 
   saveState: number = 0;
 
+  user:string = '';
+
 
   constructor(private router: Router, private store: LocalStorageService) { }
 
   ngOnInit(): void {
+    Inf.userName = this.store.getUser();
+    this.user = Inf.userName;
+
+    Inf.saveType = this.store.getOptions();
+    this.saveState = Inf.saveType;
     if(Inf.saveType==0) {
       this.option = false;
       this.switchText = "Save in localStorage";
@@ -40,9 +48,13 @@ export class OptionsComponent implements OnInit {
     }
   }
 
-  apply() {
+  onSubmit(form: NgForm) {
     this.store.saveOptions(this.saveState);
     Inf.saveType = this.store.getOptions();
+
+    this.user = form.value.user;
+    Inf.userName = this.user;
+    this.store.saveUser(Inf.userName);
 
     this.router.navigateByUrl('/');
   }
